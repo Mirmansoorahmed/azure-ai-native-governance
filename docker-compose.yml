@@ -1,0 +1,18 @@
+services:
+  governance:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPA_URL=http://opa:8181
+    depends_on:
+      - opa
+  opa:
+    image: openpolicyagent/opa:1.9.0
+    command: ["run", "--server", "--addr", "0.0.0.0:8181", "/policies"]
+    volumes:
+      - ./policies:/policies:ro
+    ports:
+      - "8181:8181"

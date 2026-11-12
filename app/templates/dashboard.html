@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Azure AI Native Governance — Dashboard</title>
+<style>body{font-family:system-ui,sans-serif;margin:2rem;color:#1e293b}h1{color:#0b3d91}.card{border:1px solid #cbd5e1;border-radius:8px;padding:1rem;margin:0.5rem 0}.gap{background:#fef3e2;border-color:#b45309}code{background:#f1f5f9;padding:2px 4px;border-radius:4px}</style></head>
+<body>
+<h1>Azure AI Native Governance</h1>
+<p><strong>SIMULATED tenant: Nordlicht GmbH (Azure).</strong> Synthetic data only — no live Azure tenant access.</p>
+<div class="card"><strong>Resources:</strong> {{ summary.resources_total }} &nbsp;|&nbsp; <strong>VMs:</strong> {{ summary.vms_total }} ({{ summary.vms_public_ip }} public IP) &nbsp;|&nbsp; <strong>Storage:</strong> {{ summary.storage_total }} ({{ summary.storage_public }} public) &nbsp;|&nbsp; <strong>Key Vaults:</strong> {{ summary.keyvaults_total }} ({{ summary.secrets_expired }} expired secrets)</div>
+<div class="card"><strong>AI:</strong> {{ summary.ai_total }} resources ({{ summary.ai_no_filter }} without content filter, {{ summary.ai_outside_eu }} outside EU) &nbsp;|&nbsp; <strong>Defender secure score:</strong> {{ summary.defender_secure_score_pct }}% &nbsp;|&nbsp; <strong>Users without MFA:</strong> {{ summary.users_without_mfa }} / {{ summary.users_total }}</div>
+<div class="card"><strong>Controls:</strong> {{ summary.controls_total }} &nbsp;|&nbsp; <strong>Risks:</strong> {{ summary.risks_total }} &nbsp;|&nbsp; <strong>Evidence rows:</strong> {{ summary.evidence_total }} &nbsp;|&nbsp; <strong>Open issues:</strong> {{ summary.open_issues }}</div>
+<div class="card gap"><strong>The gap:</strong> {{ summary.gap }}</div>
+<p>Run checks: <code>POST /tests/run</code> &nbsp;|&nbsp; Gateway demo: <code>POST /agent/action</code> &nbsp;|&nbsp; Comparison: <code>GET /comparison</code> &nbsp;|&nbsp; Native capabilities: <code>GET /native</code></p>
+</body></html>
